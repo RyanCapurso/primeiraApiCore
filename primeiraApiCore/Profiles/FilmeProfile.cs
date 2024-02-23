@@ -3,15 +3,16 @@ using primeiraApiCore.Data.Dtos;
 using primeiraApiCore.Models;
 
 
-namespace FilmesApi.Profiles;
-
-public class FilmeProfile : Profile
+namespace FilmesApi.Profiles
 {
-	public FilmeProfile()
-	{
-		CreateMap<CreateFilmeDto, Filme>();
-        CreateMap<UpdateFilmeDto, Filme>();
-        CreateMap<Filme, UpdateFilmeDto>();
-        CreateMap<Filme, ReadFilmeDto>();
-	}
+    public class FilmeProfile : Profile
+    {
+    	public FilmeProfile()
+    	{
+    		CreateMap<CreateFilmeDto, Filme>();
+            CreateMap<UpdateFilmeDto, Filme>();
+            CreateMap<Filme, UpdateFilmeDto>();
+            CreateMap<Filme, ReadFilmeDto>().ForMember(dto => dto.Sessoes, opt => opt.MapFrom(filme => filme.Sessoes));
+    	}
+    }
 }

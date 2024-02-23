@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using primeiraApiCore.Data;
 
@@ -10,9 +11,10 @@ using primeiraApiCore.Data;
 namespace primeiraApiCore.Migrations
 {
     [DbContext(typeof(FilmeContext))]
-    partial class FilmeContextModelSnapshot : ModelSnapshot
+    [Migration("20240206181041_ReadSessaoDto com filme e cinema Id")]
+    partial class ReadSessaoDtocomfilmeecinemaId
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,7 +103,7 @@ namespace primeiraApiCore.Migrations
                     b.HasOne("primeiraApiCore.models.Endereco", "Endereco")
                         .WithOne("Cinema")
                         .HasForeignKey("primeiraApiCore.models.Cinema", "EnderecoId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Endereco");

@@ -11,5 +11,6 @@ namespace primeiraApiCore.models
         public string Logradouro { get; set; }
         [Required(ErrorMessage ="O logradouro é obrigatorio")]
         public int Numero { get; set; }
+        public virtual Cinema Cinema { get; set; }
     }
 }
